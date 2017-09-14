@@ -20,5 +20,9 @@ ash = urllib.urlencode(params)
 print(ash)
 
 DBpedia = "http://it.dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
+
+
+print(DBpedia)
+
 r = requests.get(DBpedia)
 print(r.text)
