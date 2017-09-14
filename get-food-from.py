@@ -19,7 +19,7 @@ ash = urllib.urlencode(params)
 
 print(ash)
 
-DBpedia = "http://it.dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
+DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 
 
 print(DBpedia)
