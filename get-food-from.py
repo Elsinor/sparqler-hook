@@ -51,7 +51,7 @@ r = requests.get(DBpedia)
 results = json.loads(r.text)
 for result in results["results"]["bindings"]:
   ur = result["food"]["value"]
-  im = result["thumbnail"]["value"]
+  im = result['thumbnail']['value']
   data ={
     'uri':ur,
     'img':im,
