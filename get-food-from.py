@@ -50,8 +50,8 @@ for result in results["results"]["bindings"]:
     'uri':result["food"]["value"],
     'img':result["thumbnail"]["value"],
     'name':result["name"]["value"]
-    }
-  data_b.append(data)
+  }
+data_b.append(data)
 
 print(data_b)
 
