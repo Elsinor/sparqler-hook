@@ -58,5 +58,6 @@ for result in results["results"]["bindings"]:
     food['img'] = result["thumbnail"]["value"]
     
   data_b.append(food)
-    
+
+data_b = json.drops(data_b)
 print(data_b)
