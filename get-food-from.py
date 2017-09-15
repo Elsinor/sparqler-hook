@@ -59,5 +59,4 @@ for result in results["results"]["bindings"]:
     
   data_b.append(food)
 
-data_b = json.drop(data_b)
 print(data_b)
