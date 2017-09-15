@@ -3,6 +3,9 @@ import requests
 import urllib
 #import json
 
+from SPARQLWrapper import SPARQLWrapper, JSON
+
+
 empDB = []
 hasCountry = hasRegion = False
 
@@ -41,10 +44,24 @@ DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 
 
 r = requests.get(DBpedia)
-#j = json.loads(r.text)
+sparql = SPARQLWrapper("http://dbpedia.org/sparql")
+sparql.setQuery("""
+  PREFIX dbo: <http://dbpedia.org/ontology/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX dbr: <http://dbpedia.org/resource/>
+  select distinct ?food ?thumbnail  
+  where {
+    ?food rdf:type dbo:Food . """ + country + region + """
+      OPTIONAL {
+             ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
+       }
+  }
+LIMIT 100
+""")
 
-
-#valore = j['results']
-
-
-print(r.text)
+# JSON example
+print '\n\n*** JSON Example'
+sparql.setReturnFormat(JSON)
+results = sparql.query().convert()
+for result in results["results"]["bindings"]:
+    print result["food"]["value"]
