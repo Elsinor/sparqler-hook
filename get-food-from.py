@@ -49,13 +49,14 @@ DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 r = requests.get(DBpedia)
 results = json.loads(r.text)
 for result in results["results"]["bindings"]:
-  print(result["food"]["value"])
-  print(result["thumbnail"]["value"])
-  #data ={
-  #  'uri':str(result["food"]["value"]),
-  #  'img':str(result["thumbnail"]["value"]),
-  #  'name':str(result["label"]["value"])
-  #  }
-  #data_b.append(data)
-
-#print(data_b)
+  food = {}
+  
+  if result["food"].has_key('value'):
+    food['uri'] = result["food"]["value"]
+    
+  if result.has_key('thumbnail'):
+    food['img'] = result["thumbnail"]["value"]
+    
+  data_b.append(food)
+    
+print(data_b)
