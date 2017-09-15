@@ -1,7 +1,7 @@
 import pprint
 import requests
 import urllib
-import json
+#import json
 
 hasCountry = hasRegion = False
 
@@ -36,7 +36,7 @@ ash = urllib.urlencode(params)
 
 DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 
-DBlink = DBpedia['value']
+#DBlink = DBpedia['value']
 
 
 r = requests.get(DBpedia)
