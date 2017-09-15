@@ -31,10 +31,13 @@ where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
            ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
-           ?food <http://dbpedia.org/ontology/name> ?name .
        }
 }
 LIMIT 100"""
+
+           #?food <http://dbpedia.org/ontology/name> ?name .
+  
+  
 params = {"query":q}
 ash = urllib.urlencode(params)
 
@@ -48,7 +51,7 @@ results = json.loads(r.text)
 for result in results["results"]["bindings"]:
       data ={
         'uri':result["food"]["value"],
-        #'img':result["thumbnail"]["value"],
+        'img':result["thumbnail"]["value"],
         #'name':result["label"]["value"]
       }
 data_b.append(data)
