@@ -43,7 +43,7 @@ r = requests.get(DBpedia)
 j = json.loads(r.text)
 
 
-#valore = j['food'][0]['value']
+valore = j['result'][0]['food']
 
 
-print(j)
+print(valore)
