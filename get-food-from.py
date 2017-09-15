@@ -46,3 +46,5 @@ r = requests.get(DBpedia)
 results = json.loads(r.text)
 for result in results["results"]["bindings"]:
     print result["food"]["value"]
+    print result["thumbnails"]["value"]
+    print ("-------------------------------------------------------------")
