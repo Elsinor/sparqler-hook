@@ -52,5 +52,6 @@ for result in results["results"]["bindings"]:
     'name':result["name"]["value"]
     }
   data_b.append(data)
-  print(data_b)
+
+print(data_b)
 
