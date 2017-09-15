@@ -1,7 +1,7 @@
 country = Hook['params']['country']
 region = Hook['params']['region']
 print(country)
-print(test)
+print(region)
 
 import pprint
 import requests
