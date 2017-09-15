@@ -41,11 +41,7 @@ DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 
 r = requests.get(DBpedia)
 j = json.loads(r.text)
-dat = {
-'food':j['value'],
-'thumbnails':j['value']
-}
-empDB.append(dat)
+
 
 
 print(j['food']['thumbnails'])
