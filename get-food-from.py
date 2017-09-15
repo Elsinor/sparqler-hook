@@ -46,4 +46,4 @@ r = requests.get(DBpedia)
 #valore = j['results']['food']#['food']
 
 
-print(r.text)
+print(r['results'].text)
