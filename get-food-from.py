@@ -5,7 +5,7 @@ import json
 
 
 
-empDB = []
+data_b = []
 hasCountry = hasRegion = False
 
 if Hook['params'].has_key('country'):
@@ -31,6 +31,7 @@ where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
            ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
+           ?food <http://dbpedia.org/ontology/name> ?name .
        }
 }
 LIMIT 100"""
@@ -45,6 +46,11 @@ DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 r = requests.get(DBpedia)
 results = json.loads(r.text)
 for result in results["results"]["bindings"]:
-    print result["food"]["value"]
-    print result["thumbnail"]["value"]
-    print ("-------------------------------------------------------------")
+  data ={
+    'uri':result["food"]["value"]
+    'img':result["thumbnail"]["value"]
+    'name':result["name"]["value"]
+    }
+  data_b.append(data)
+  print(data_b)
+
