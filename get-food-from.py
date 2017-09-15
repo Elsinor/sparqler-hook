@@ -49,7 +49,7 @@ for result in results["results"]["bindings"]:
   data ={
     'uri':result["food"]["value"],
     #'img':result["thumbnail"]["value"],
-    'name':result["name"]["value"]
+    #'name':result["name"]["value"]
   }
 data_b.append(data)
 
