@@ -4,15 +4,15 @@ import urllib
 
 hasCountry = hasRegion = false;
 
-if (Hook['params']['country'] is not None)
+if Hook['params']['country'] is not None
   hasCountry = true;
-if (Hook['params']['region'] is not None)
+if Hook['params']['region'] is not None
   hasRegion = true;
 
 country = region = "";
-if (hasCountry)
+if hasCountry
   country = "?food dbo:country dbr:" + Hook['params']['country'] + " . "
-if (hasRegion)
+if hasRegion
   region = "?food dbo:region dbr:" + Hook['params']['region'] + " . " 
   
 print(country)
