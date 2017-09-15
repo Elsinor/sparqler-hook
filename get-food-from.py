@@ -1,9 +1,8 @@
 import pprint
 import requests
 import urllib
-#import json
+import json
 
-from SPARQLWrapper import SPARQLWrapper, JSON
 
 
 empDB = []
