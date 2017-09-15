@@ -46,11 +46,11 @@ DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 r = requests.get(DBpedia)
 results = json.loads(r.text)
 for result in results["results"]["bindings"]:
-  data ={
-    'uri':result["food"]["value"],
-    #'img':result["thumbnail"]["value"],
-    'name':result["label"]["value"]
-  }
+      data ={
+        'uri':result["food"]["value"],
+        #'img':result["thumbnail"]["value"],
+        #'name':result["label"]["value"]
+      }
 data_b.append(data)
 
 print(data_b)
