@@ -4,9 +4,9 @@ import urllib
 
 hasCountry = hasRegion = False
 
-if Hook['params']['country'] is not None:
+if Hook['params'].has_key('country'):
   hasCountry = True
-if Hook['params']['region'] is not None:
+if Hook['params'].has_key('region'):
   hasRegion = True
 
 country = region = ""
