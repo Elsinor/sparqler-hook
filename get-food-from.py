@@ -57,7 +57,7 @@ for result in results["results"]["bindings"]:
     'img':str(result["thumbnail"]["value"]),
     'name':str(result["name"]["value"])
     }
-data_b.append(data)
+  data_b.append(data)
 
 print(data_b)
 
