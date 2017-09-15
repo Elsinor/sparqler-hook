@@ -48,4 +48,4 @@ dat = {
 empDB.append(dat)
 
 
-print(j['food']['value'])
+print(j['food']['thumbnails'])
