@@ -44,4 +44,4 @@ j = json.loads(r.text)
 
 
 
-print(j['food']['thumbnails'])
+print(j)
