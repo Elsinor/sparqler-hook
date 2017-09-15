@@ -46,4 +46,6 @@ dat = {
 'thumbnails':j['value']
 }
 empDB.append(dat)
-print(empDB)
+
+
+print(j['food']['value'])
