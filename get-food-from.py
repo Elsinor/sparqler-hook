@@ -26,16 +26,17 @@ print(region)
 q = """PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dbr: <http://dbpedia.org/resource/>
-select distinct ?food ?thumbnail
+select distinct ?food ?thumbnail ?name
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
            ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
+           ?food <http://dbpedia.org/ontology/name> ?name .
        }
 }
 LIMIT 100"""
 
-           #?food <http://dbpedia.org/ontology/name> ?name .
+
   
   
 params = {"query":q}
@@ -54,7 +55,7 @@ for result in results["results"]["bindings"]:
   data ={
     'uri':str(result["food"]["value"]),
     'img':str(result["thumbnail"]["value"]),
-    'name':str(result["label"]["value"])
+    'name':str(result["name"]["value"])
     }
 data_b.append(data)
 
