@@ -1,3 +1,4 @@
+print(Hook['params']['test'])
 country = Hook['params']['country']
 print(country)
 
