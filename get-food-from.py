@@ -4,9 +4,9 @@ import urllib
 
 hasCountry = hasRegion = false;
 
-if (Hook['params']['country'] != None)
+if (Hook['params']['country'] is not None)
   hasCountry = true;
-if (Hook['params']['region'] != None)
+if (Hook['params']['region'] is not None)
   hasRegion = true;
 
 country = region = "";
