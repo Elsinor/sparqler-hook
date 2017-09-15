@@ -2,12 +2,12 @@ import pprint
 import requests
 import urllib
 
-hasCountry = hasRegion = false
+hasCountry = hasRegion = False
 
 if Hook['params']['country'] is not None:
-  hasCountry = true
+  hasCountry = True
 if Hook['params']['region'] is not None:
-  hasRegion = true
+  hasRegion = True
 
 country = region = ""
 if hasCountry:
