@@ -2,7 +2,7 @@ import pprint
 import requests
 import urllib
 #import json
-
+empDB = []
 hasCountry = hasRegion = False
 
 if Hook['params'].has_key('country'):
@@ -41,4 +41,9 @@ DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 
 r = requests.get(DBpedia)
 j = json.loads(r.text)
-print(j)
+dat = {
+'food':j['value'],
+'thumbnails':j['value']
+}
+empDB.append(dat)
+print(empDB)
