@@ -40,4 +40,5 @@ DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 
 
 r = requests.get(DBpedia)
-print(r['value'].text)
+j = json.loads(r)
+print(j)
