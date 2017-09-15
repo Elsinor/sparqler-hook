@@ -2,6 +2,7 @@ import pprint
 import requests
 import urllib
 #import json
+
 empDB = []
 hasCountry = hasRegion = False
 
@@ -43,7 +44,7 @@ r = requests.get(DBpedia)
 #j = json.loads(r.text)
 
 
-#valore = j['results']['food']#['food']
+#valore = j['results']
 
 
-print(r['results'].text)
+print(r.text)
