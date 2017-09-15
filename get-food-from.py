@@ -59,4 +59,5 @@ for result in results["results"]["bindings"]:
     
   data_b.append(food)
 
+print(data_b[0]);
 print(data_b)
