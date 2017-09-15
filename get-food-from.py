@@ -17,12 +17,8 @@ LIMIT 100"""
 params = {"query":q}
 ash = urllib.urlencode(params)
 
-print(ash)
-
 DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 
-
-print(DBpedia)
 
 r = requests.get(DBpedia)
 print(r.text)
