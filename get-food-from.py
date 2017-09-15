@@ -51,11 +51,11 @@ results = json.loads(r.text)
 for result in results["results"]["bindings"]:
   print(result["food"]["value"])
   print(result["thumbnail"]["value"])
-      data ={
-        'uri':str(result["food"]["value"]),
-        'img':str(result["thumbnail"]["value"]),
-        'name':str(result["label"]["value"])
-      }
+  data ={
+    'uri':str(result["food"]["value"]),
+    'img':str(result["thumbnail"]["value"]),
+    'name':str(result["label"]["value"])
+    }
 data_b.append(data)
 
 print(data_b)
