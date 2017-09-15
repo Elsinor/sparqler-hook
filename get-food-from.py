@@ -1,6 +1,7 @@
 import pprint
 import requests
 import urllib
+import json
 
 hasCountry = hasRegion = False
 
@@ -22,14 +23,18 @@ print(region)
 q = """PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dbr: <http://dbpedia.org/resource/>
-select distinct ?food
+select distinct ?food ?dbo:thumbnail ?
 where {
-?food rdf:type dbo:Food . """ + country + region + """}
+?food rdf:type dbo:Food . """ + country + region + """
+OPTIONAL { ?location dbo:thumbnail ?thumbnail . }
+}
 LIMIT 100"""
 params = {"query":q}
 ash = urllib.urlencode(params)
 
 DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
+
+DBlink = DBpedia['value']
 
 
 r = requests.get(DBpedia)
