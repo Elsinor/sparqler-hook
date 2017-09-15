@@ -26,7 +26,7 @@ PREFIX dbr: <http://dbpedia.org/resource/>
 select distinct ?food ?dbo:thumbnail ?
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
-OPTIONAL { ?location dbo:thumbnail ?thumbnail . }
+?location dbo:thumbnail ?thumbnail . 
 }
 LIMIT 100"""
 params = {"query":q}
