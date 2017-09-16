@@ -22,16 +22,18 @@ if hasRegion:
 q = """PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dbr: <http://dbpedia.org/resource/>
-select distinct ?food ?thumbnail
+PREFIX foaf: <http://xmlns.com/foaf/spec/>
+select distinct ?food ?thumbnail ?name
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
            ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
+           ?food <http://xmlns.com/foaf/spec/name> ?name .
        }
 }
 LIMIT 100"""
 
-           #?food <http://dbpedia.org/ontology/name> ?name .
+           
   
   
 params = {"query":q}
@@ -52,6 +54,9 @@ for result in results["results"]["bindings"]:
     
   if result.has_key('thumbnail'):
     food['img'] = result["thumbnail"]["value"]
+  
+  if result.has_key('name'):
+    food['name'] = result["name"]["value"]
     
   data_b.append(food)
 
