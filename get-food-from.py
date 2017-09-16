@@ -56,8 +56,8 @@ for result in results["results"]["bindings"]:
   if result.has_key('thumbnail'):
     food['img'] = result["thumbnail"]["value"]
   
-  #if result.has_key('name'):
-   # food['name'] = result["name"]["value"]
+  if result.has_key('label'):
+    food['name'] = result["label"]["value"]
     
   data_b.append(food)
 
