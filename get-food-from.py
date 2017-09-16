@@ -28,11 +28,13 @@ where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
            ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
-           ?food <http://xmlns.com/foaf/spec/name> ?name .
+           
        }
 }
 LIMIT 100"""
 
+
+#?food <http://xmlns.com/foaf/spec/name> ?name .
            
   
   
@@ -60,5 +62,5 @@ for result in results["results"]["bindings"]:
     
   data_b.append(food)
 
-print(r.text);
+#print(r.text);
 print(data_b)
