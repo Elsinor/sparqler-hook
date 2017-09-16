@@ -61,5 +61,5 @@ for result in results["results"]["bindings"]:
     
   data_b.append(food)
 
-print(r.text);
+#print(r.text);
 print(data_b)
