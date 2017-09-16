@@ -28,7 +28,7 @@ where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
            ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
-           ?food <http://www.w3.org/2000/01/rdf-schema#> ?name .
+           ?food <http://www.w3.org/2000/01/rdf-schema#> ?label .
        }
 }
 LIMIT 100"""
@@ -62,5 +62,5 @@ for result in results["results"]["bindings"]:
     
   data_b.append(food)
 
-#print(r.text);
+print(r.text);
 print(data_b)
