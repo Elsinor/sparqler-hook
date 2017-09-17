@@ -74,7 +74,7 @@ for result in results["results"]["bindings"]:
 
         if result.has_key('abstract'):
           desc = result['abstract']['value']
-          foods[resource]['descr'] = desc
+          foods[resource]['descr'][lang] = desc
 
 foods = json.dumps(foods)
 #print(r.text)
