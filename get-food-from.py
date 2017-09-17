@@ -20,11 +20,11 @@ if hasRegion:
 q = """PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dbr: <http://dbpedia.org/resource/>
-select distinct ?food ?thumbnail ?label ?has abstract 
+select distinct ?food ?thumbnail ?label ?abstract 
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
-           ?food rdfs:label ?has abstract .
+           ?food <http://dbpedia.org/ontology/thumbnail> ?abstract .
            ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
            ?food rdfs:label ?label .
            
