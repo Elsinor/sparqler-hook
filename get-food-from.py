@@ -69,5 +69,7 @@ for result in results["results"]["bindings"]:
          img = result["thumbnail"]["value"]
          foods[resource]['img'] = img
 
-#print(r.text);
+
+foods = json.dumps(foods)
+#print(r.text)
 print(foods)
