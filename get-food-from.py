@@ -25,15 +25,17 @@ select distinct ?food ?thumbnail ?label ?abstract
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
-           
+           ?food dbpedia-owl:abstract ?abstract .
+           }
+  OPTIONAL{
            ?food dbpedia-owl:thumbnail ?thumbnail .
+           }
+  OPTIONAL{
            ?food rdfs:label ?label .
-           
        }
 }
 LIMIT 100"""
           
-  #?food dbpedia-owl:abstract ?abstract .
   
 params = {"query":q}
 ash = urllib.urlencode(params)
