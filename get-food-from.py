@@ -20,12 +20,13 @@ if hasRegion:
 q = """PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
 select distinct ?food ?thumbnail ?label ?abstract 
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
-           ?food <http://dbpedia.org/ontology/abstract> ?abstract .
-           ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
+           ?food dbpedia-owl:abstract ?abstract .
+           ?food dbpedia-owl:thumbnail ?thumbnail .
            ?food rdfs:label ?label .
            
        }
@@ -33,7 +34,15 @@ where {
 LIMIT 100"""
 
 #
+"""
 
+prefix dbpedia: <http://dbpedia.org/resource/>
+prefix dbpedia-owl: <http://dbpedia.org/ontology/>
+
+select ?abstract ?thumbnail where { 
+  dbpedia:Ernest_Hemingway dbpedia-owl:abstract ?abstract ;
+                           dbpedia-owl:thumbnail ?thumbnail .
+"""
            
   
   
