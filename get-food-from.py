@@ -55,26 +55,29 @@ for result in results["results"]["bindings"]:
   if result['food'].has_key('value'):
     resource = result['food']['value']
     
+    desc = ''
     if result.has_key('label'):
       name = result['label']['value']
-      lang = result['label']['xml:lang']
-     
+      lang = result['label']['xml:lang']      
+      
+      if result.has_key('abstract'):
+          desc = result['abstract']['value']
+          foods[resource]['desc'][lang] = desc
+          
       if foods.has_key(resource):
         foods[resource]['name'][lang] = name
+        foods[resource]['desc'][lang] = desc
       else:
         foods[resource] = {}
         foods[resource]['name'] = {}
-        foods[resource]['descr'] = {}
+        foods[resource]['desc'] = {}
         foods[resource]['name'][lang] = name
-        
+        foods[resource]['desc'][lang] = desc
+          
         if result.has_key('thumbnail'):
           #food['img'] = result["thumbnail"]["value"]
           img = result['thumbnail']['value']
           foods[resource]['img'] = img
-
-        if result.has_key('abstract'):
-          desc = result['abstract']['value']
-          foods[resource]['descr'][lang] = desc
 
 foods = json.dumps(foods)
 #print(r.text)
