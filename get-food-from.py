@@ -63,7 +63,7 @@ for result in results["results"]["bindings"]:
      
       if foods.has_key(resource):
         foods[resource]['name'][lang] = name
-      else
+      else:
         foods[resource] = {}
         foods[resource]['name'] = {}
         foods[resource]['name'][lang] = name
