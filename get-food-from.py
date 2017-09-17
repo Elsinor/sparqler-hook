@@ -20,18 +20,18 @@ if hasRegion:
 q = """PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dbr: <http://dbpedia.org/resource/>
-select distinct ?food ?thumbnail ?label ?abstract
+select distinct ?food ?thumbnail ?label
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
            ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
            ?food rdfs:label ?label .
-           ?food <http://dbpedia.org/ontology/abstract> ?abstract .
+           
        }
 }
 LIMIT 100"""
 
-
+#?food <http://dbpedia.org/ontology/abstract> ?abstract .
 
            
   
