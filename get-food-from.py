@@ -4,8 +4,6 @@ import urllib
 import json
 
 
-
-data_b = []
 hasCountry = hasRegion = False
 
 if Hook['params'].has_key('country'):
@@ -49,12 +47,10 @@ r = requests.get(DBpedia)
 results = json.loads(r.text)
 
 foods = {}
+
 for result in results["results"]["bindings"]:
-  #food = {}
   
   if result['food'].has_key('value'):
-    
-    #food['uri'] = result["food"]["value"]
     resource = result['food']['value']
     
     if result.has_key('label'):
