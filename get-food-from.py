@@ -47,7 +47,7 @@ DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
 
 r = requests.get(DBpedia)
 results = json.loads(r.text)
-
+print(results)
 foods = {}
 
 for result in results["results"]["bindings"]:
