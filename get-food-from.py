@@ -24,7 +24,7 @@ select distinct ?food ?thumbnail ?label ?abstract
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
-           ?food <http://dbpedia.org/ontology/thumbnail> ?abstract .
+           ?food <http://dbpedia.org/ontology/abstract> ?abstract .
            ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
            ?food rdfs:label ?label .
            
