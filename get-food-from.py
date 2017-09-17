@@ -71,7 +71,6 @@ for result in results["results"]["bindings"]:
          foods[resource]['img'] = img
 
         if result.has_key('abstract'):
-         #food['img'] = result["thumbnail"]["value"]
          descr = result["abstract"]["value"]
          foods[resource]['descr'] = descr
 
