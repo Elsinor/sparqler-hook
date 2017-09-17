@@ -20,12 +20,13 @@ if hasRegion:
 q = """PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dbr: <http://dbpedia.org/resource/>
-select distinct ?food ?thumbnail ?label
+select distinct ?food ?thumbnail ?label ?abstract
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
            ?food <http://dbpedia.org/ontology/thumbnail> ?thumbnail .
            ?food rdfs:label ?label .
+           ?food <http://dbpedia.org/ontology/abstract> ?abstract .
        }
 }
 LIMIT 100"""
@@ -69,6 +70,10 @@ for result in results["results"]["bindings"]:
          img = result["thumbnail"]["value"]
          foods[resource]['img'] = img
 
+        if result.has_key('abstract'):
+         #food['img'] = result["thumbnail"]["value"]
+         descr = result["abstract"]["value"]
+         foods[resource]['descr'] = descr
 
 foods = json.dumps(foods)
 #print(r.text)
