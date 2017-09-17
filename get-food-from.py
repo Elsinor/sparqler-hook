@@ -62,7 +62,6 @@ for result in results["results"]["bindings"]:
       
       if result.has_key('abstract'):
           desc = result['abstract']['value']
-          foods[resource]['desc'][lang] = desc
           
       if foods.has_key(resource):
         foods[resource]['name'][lang] = name
