@@ -20,21 +20,21 @@ if hasRegion:
 q = """PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dbr: <http://dbpedia.org/resource/>
-PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
+
 select distinct ?food ?thumbnail ?label ?abstract 
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
-           ?food dbpedia-owl:abstract ?abstract .
+           ?food dbo:abstract ?abstract .
            }
   OPTIONAL{
-           ?food dbpedia-owl:thumbnail ?thumbnail .
+           ?food dbo:thumbnail ?thumbnail .
            }
   OPTIONAL{
            ?food rdfs:label ?label .
        }
 }
-LIMIT 100"""
+"""
           
   
 params = {"query":q}
