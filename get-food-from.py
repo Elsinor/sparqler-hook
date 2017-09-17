@@ -25,26 +25,15 @@ select distinct ?food ?thumbnail ?label ?abstract
 where {
 ?food rdf:type dbo:Food . """ + country + region + """
   OPTIONAL {
-           ?food dbpedia-owl:abstract ?abstract .
+           
            ?food dbpedia-owl:thumbnail ?thumbnail .
            ?food rdfs:label ?label .
            
        }
 }
 LIMIT 100"""
-
-#
-"""
-
-prefix dbpedia: <http://dbpedia.org/resource/>
-prefix dbpedia-owl: <http://dbpedia.org/ontology/>
-
-select ?abstract ?thumbnail where { 
-  dbpedia:Ernest_Hemingway dbpedia-owl:abstract ?abstract ;
-                           dbpedia-owl:thumbnail ?thumbnail .
-"""
-           
-  
+          
+  #?food dbpedia-owl:abstract ?abstract .
   
 params = {"query":q}
 ash = urllib.urlencode(params)
