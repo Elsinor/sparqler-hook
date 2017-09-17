@@ -2,10 +2,9 @@ import pprint
 import requests
 import urllib
 import json
-from firebase import firebase
+
 
 hasCountry = hasRegion = False
-firebase = firebase.FirebaseApplication('https://foodbase-2017.firebaseio.com', None)
 
 if Hook['params'].has_key('country'):
   hasCountry = True
@@ -72,21 +71,5 @@ for result in results["results"]["bindings"]:
 
 
 foods = json.dumps(foods)
-
-nazione = ''
-regione = ''
-
-if hasCountry:
-  nazione = country + '/'
-    
-if hasRegion:
-  regione = region + '/' 
-
-link_db = '/' + nazione + regione 
-
-
-firebase.post(link_db, foods['name'])
-
 #print(r.text)
-
 print(foods)
