@@ -72,8 +72,8 @@ for result in results["results"]["bindings"]:
           foods[resource]['img'] = img
 
        if result.has_key('abstract'):
-         descr = result["abstract"]["value"]
-         foods[resource]['descr'] = descr
+          descr = result["abstract"]["value"]
+          foods[resource]['descr'] = descr
 
 foods = json.dumps(foods)
 #print(r.text)
