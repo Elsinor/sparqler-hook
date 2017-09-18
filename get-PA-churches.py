@@ -35,14 +35,10 @@ for result in results["results"]["bindings"]:
   
   if result['church'].has_key('value'):
     resource = result['church']['value']
-    
-    desc = ''
+
     if result.has_key('label'):
       name = result['label']['value']
       lang = result['label']['xml:lang']      
-      
-      if result.has_key('abstract'):
-          desc = result['abstract']['value']
           
       if churches.has_key(resource):
         churches[resource]['name'][lang] = name
@@ -50,10 +46,13 @@ for result in results["results"]["bindings"]:
       else:
         churches[resource] = {}
         churches[resource]['name'] = {}
-        churches[resource]['desc'] = {}
         churches[resource]['name'][lang] = name
-        churches[resource]['desc'][lang] = desc
-          
+        
+        lat = result['lat']['value']
+        churches[resource]['lat'] = lat
+        long = result['long']['value']
+        churches[resource]['long'] = long
+      
         if result.has_key('thumbnail'):
           #church['img'] = result["thumbnail"]["value"]
           img = result['thumbnail']['value']
