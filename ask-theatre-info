@@ -43,8 +43,8 @@ if Hook['params'].has_key('name'):
 
   for result in results["results"]["bindings"]:
 
-    if result['food'].has_key('value'):
-    #'theatre', u'comment', u'abstract', u'thumbnail', u'architect', u'since', u'label'
+    if result['theatre'].has_key('value'):
+    #'comment','architect', 'since',
       resource = result['theatre']['value']
 
       desc = ''
@@ -55,24 +55,24 @@ if Hook['params'].has_key('name'):
         if result.has_key('abstract'):
             desc = result['abstract']['value']
 
-        if foods.has_key(resource):
-          foods[resource]['name'][lang] = name
-          foods[resource]['desc'][lang] = desc
+        if theatres.has_key(resource):
+          theatres[resource]['name'][lang] = name
+          theatres[resource]['desc'][lang] = desc
         else:
-          foods[resource] = {}
-          foods[resource]['name'] = {}
-          foods[resource]['desc'] = {}
-          foods[resource]['name'][lang] = name
-          foods[resource]['desc'][lang] = desc
+          theatres[resource] = {}
+          theatres[resource]['name'] = {}
+          theatres[resource]['desc'] = {}
+          theatres[resource]['name'][lang] = name
+          theatres[resource]['desc'][lang] = desc
 
           if result.has_key('thumbnail'):
-            #food['img'] = result["thumbnail"]["value"]
+            #theatre['img'] = result["thumbnail"]["value"]
             img = result['thumbnail']['value']
-            foods[resource]['img'] = img
+            theatres[resource]['img'] = img
 
-  foods = json.dumps(foods)
+  theatres = json.dumps(theatres)
   #print(r.text)
-  print(foods)
+  print(theatres)
   
 else:
   print("no label")
