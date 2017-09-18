@@ -6,14 +6,16 @@ import json
 q = """PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dbc: <http://dbpedia.org/resource/Category:>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
 
-select distinct ?church ?label ?lat ?long
+select distinct ?church ?label ?lat ?long ?thumbnail
 where 
 {
    ?church dct:subject dbc:Churches_in_Palermo . 
    ?church rdfs:label ?label .
    ?church geo:lat ?lat .
    ?church geo:long ?long .
+   ?church dbo:thumbnail ?thumbnail .
 }
 """
           
