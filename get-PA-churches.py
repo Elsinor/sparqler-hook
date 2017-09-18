@@ -42,7 +42,6 @@ for result in results["results"]["bindings"]:
           
       if churches.has_key(resource):
         churches[resource]['name'][lang] = name
-        churches[resource]['desc'][lang] = desc
       else:
         churches[resource] = {}
         churches[resource]['name'] = {}
