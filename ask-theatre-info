@@ -44,31 +44,45 @@ if Hook['params'].has_key('name'):
   for result in results["results"]["bindings"]:
 
     if result['theatre'].has_key('value'):
-    #'comment','architect', 'since',
+
       resource = result['theatre']['value']
 
       desc = ''
+      comment = ''
+      
       if result.has_key('label'):
         name = result['label']['value']
         lang = result['label']['xml:lang']      
 
         if result.has_key('abstract'):
-            desc = result['abstract']['value']
+          desc = result['abstract']['value']
+
+        if result.has_key('comment'):
+          comment = result['comment']['value']
 
         if theatres.has_key(resource):
           theatres[resource]['name'][lang] = name
           theatres[resource]['desc'][lang] = desc
+          theatres[resource]['comment'][lang] = comment
         else:
           theatres[resource] = {}
           theatres[resource]['name'] = {}
           theatres[resource]['desc'] = {}
+          theatres[resource]['comment'] = {}
           theatres[resource]['name'][lang] = name
           theatres[resource]['desc'][lang] = desc
+          theatres[resource]['comment'][lang] = comment
 
           if result.has_key('thumbnail'):
             #theatre['img'] = result["thumbnail"]["value"]
             img = result['thumbnail']['value']
             theatres[resource]['img'] = img
+         
+          if result.has_key('architect'):
+            architect = result['architect']['value']
+        
+          if result.has_key('since'):
+            since = result['since']['value']
 
   theatres = json.dumps(theatres)
   #print(r.text)
