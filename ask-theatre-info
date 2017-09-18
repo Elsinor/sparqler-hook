@@ -23,7 +23,7 @@ if Hook['params'].has_key('name'):
   ?theatre dbp:opened ?since .
 
   filter(str(?label)=\""""+name+"""\")
- }
+ } LIMIT 20
  """
 
 
@@ -38,6 +38,41 @@ if Hook['params'].has_key('name'):
   r = requests.get(DBpedia)
   results = json.loads(r.text)
   print(results)
+  
+  theatres = {}
+
+  for result in results["results"]["bindings"]:
+
+    if result['food'].has_key('value'):
+    #'theatre', u'comment', u'abstract', u'thumbnail', u'architect', u'since', u'label'
+      resource = result['theatre']['value']
+
+      desc = ''
+      if result.has_key('label'):
+        name = result['label']['value']
+        lang = result['label']['xml:lang']      
+
+        if result.has_key('abstract'):
+            desc = result['abstract']['value']
+
+        if foods.has_key(resource):
+          foods[resource]['name'][lang] = name
+          foods[resource]['desc'][lang] = desc
+        else:
+          foods[resource] = {}
+          foods[resource]['name'] = {}
+          foods[resource]['desc'] = {}
+          foods[resource]['name'][lang] = name
+          foods[resource]['desc'][lang] = desc
+
+          if result.has_key('thumbnail'):
+            #food['img'] = result["thumbnail"]["value"]
+            img = result['thumbnail']['value']
+            foods[resource]['img'] = img
+
+  foods = json.dumps(foods)
+  #print(r.text)
+  print(foods)
   
 else:
   print("no label")
