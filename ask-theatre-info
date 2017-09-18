@@ -1,0 +1,81 @@
+import pprint
+import requests
+import urllib
+import json
+
+
+
+if Hook['params'].has_key('name'):
+  name = Hook['params']['name']
+
+  q = """PREFIX dbo: <http://dbpedia.org/ontology/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX dbr: <http://dbpedia.org/resource/>
+  PREFIX dbp: <http://dbpedia.org/property/>
+  select distinct ?theatre ?comment ?abstract ?thumbnail ?architect ?since ?label
+  where {
+  ?theatre rdf:type dbo:Building . 
+  ?theatre rdfs:label ?label .
+  ?theatre rdfs:comment ?comment .
+  ?theatre dbo:abstract ?abstract .
+  ?theatre dbo:thumbnail ?thumbnail .
+  ?theatre dbp:architect ?architect .
+  ?theatre dbp:opened ?since .
+
+  filter(str(?label)=\""""+name+"""\")
+ }
+ """
+
+
+  params = {"query":q}
+  ash = urllib.urlencode(params)
+
+  DBpedia = "http://dbpedia.org/sparql?"+ash+"&format=json&run=+Run+Query+"
+
+  #DBlink = DBpedia['value']
+
+
+  r = requests.get(DBpedia)
+  results = json.loads(r.text)
+  print(results)
+  theatres = {}
+
+  for result in results["results"]["bindings"]:
+
+    if result['food'].has_key('value'):
+      resource = result['food']['value']
+
+      desc = ''
+      if result.has_key('label'):
+        name = result['label']['value']
+        lang = result['label']['xml:lang']      
+
+        if result.has_key('abstract'):
+            desc = result['abstract']['value']
+
+        if foods.has_key(resource):
+          foods[resource]['name'][lang] = name
+          foods[resource]['desc'][lang] = desc
+        else:
+          foods[resource] = {}
+          foods[resource]['name'] = {}
+          foods[resource]['desc'] = {}
+          foods[resource]['name'][lang] = name
+          foods[resource]['desc'][lang] = desc
+
+          if result.has_key('thumbnail'):
+            #food['img'] = result["thumbnail"]["value"]
+            img = result['thumbnail']['value']
+            foods[resource]['img'] = img
+
+  foods = json.dumps(foods)
+  #print(r.text)
+  print(foods)
+  
+  else:
+    print("no label")
+
+
+
+
+  
