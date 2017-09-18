@@ -23,7 +23,7 @@ if Hook['params'].has_key('name'):
   ?theatre dbp:opened ?since .
 
   filter(str(?label)=\""""+name+"""\")
- } LIMIT 20
+ }
  """
 
 
