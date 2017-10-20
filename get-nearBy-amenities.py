@@ -43,29 +43,29 @@ if Hook['params'].has_key('lng'):
 
         for result in results["results"]["bindings"]:
         
-        if result['church'].has_key('value'):
-            resource = result['church']['value']
+            if result['church'].has_key('value'):
+                resource = result['church']['value']
 
-            if result.has_key('label'):
-            name = result['label']['value']
-            lang = result['label']['xml:lang']      
+                if result.has_key('label'):
+                name = result['label']['value']
+                lang = result['label']['xml:lang']      
+                    
+                if amenities.has_key(resource):
+                    amenities[resource]['name'][lang] = name
+                else:
+                    amenities[resource] = {}
+                    amenities[resource]['name'] = {}
+                    amenities[resource]['name'][lang] = name
+                    
+                    lat = result['lat']['value']
+                    amenities[resource]['lat'] = lat
+                    long = result['long']['value']
+                    amenities[resource]['long'] = long
                 
-            if amenities.has_key(resource):
-                amenities[resource]['name'][lang] = name
-            else:
-                amenities[resource] = {}
-                amenities[resource]['name'] = {}
-                amenities[resource]['name'][lang] = name
-                
-                lat = result['lat']['value']
-                amenities[resource]['lat'] = lat
-                long = result['long']['value']
-                amenities[resource]['long'] = long
-            
-                if result.has_key('thumbnail'):
-                #church['img'] = result["thumbnail"]["value"]
-                img = result['thumbnail']['value']
-                amenities[resource]['img'] = img
+                    if result.has_key('thumbnail'):
+                    #church['img'] = result["thumbnail"]["value"]
+                    img = result['thumbnail']['value']
+                    amenities[resource]['img'] = img
 
         amenities = json.dumps(amenities)
         #print(r.text)
