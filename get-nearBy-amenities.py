@@ -70,4 +70,4 @@ if Hook['params'].has_key('lng'):
 
         amenities = json.dumps(amenities)
         #print(r.text)
-        #print(amenities)
+        #print(amenities) 
