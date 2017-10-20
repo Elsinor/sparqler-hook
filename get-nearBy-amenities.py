@@ -1,9 +1,10 @@
+print('lol')
 import pprint
 import requests
 import urllib
 import json
 
-print('lol')
+
 if Hook['params'].has_key('lng'):
     lng = Hook['params']['lng']
     print('lng: ' + lng + '<br>')
