@@ -5,10 +5,10 @@ import json
 
 if Hook['params'].has_key('lng'):
     lng = Hook['params']['lng']
-
+    print('lng: ' + lng + '<br>')
     if Hook['params'].has_key('lat'):
         lat = Hook['params']['lat']
-
+        print('lat: ' + lat + '<br>')
         q = """PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
         PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
