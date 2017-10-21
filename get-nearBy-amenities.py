@@ -23,7 +23,9 @@ if Hook['params'].has_key('lng'):
 
         params = {"query":q}
         ash = urllib.urlencode(params)
-        LinkedGeoData = "http://linkedgeodata.org/sparql?"+ash+"&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on"
+        LinkedGeoData = ""
+        while LinkedGeoData == "":
+            LinkedGeoData = "http://linkedgeodata.org/sparql?"+ash+"&format=application%2Fsparql-results%2Bjson&timeout=0&debug=on"
 
         #DBlink = DBpedia['value']
 
