@@ -45,8 +45,8 @@ if Hook['params'].has_key('lng'):
             if result['uri'].has_key('value'):
               uri = result['uri']['value']
           
-            geodat[name] = {}
-            geodat[name][uri] = {}
+            geodat[uri] = {}
+            geodat[uri]["name"] = name
             
         geodat = json.dumps(geodat)
         print(geodat)        
